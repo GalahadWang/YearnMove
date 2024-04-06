@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  # ???????
+  datasource:
+    # ???????
+    type: com.zaxxer.hikari.HikariDataSource
+    # ?????????
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://gz-cynosdbmysql-grp-6gv2ivx1.sql.tencentcdb.com:28255/Elec5610?characterEncoding=utf-8&useSSL=false
+    # ???????????
+    username: Bill
+    password: Elec630M
