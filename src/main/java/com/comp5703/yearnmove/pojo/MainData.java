@@ -15,6 +15,7 @@ public class MainData {
     private String physImpAsInclusionCriterion;
     @TableField("CogImpLowMood_as_inclusion_criterion")
     private String cogImpLowMoodAsInclusionCriterion;
+    @TableField("type_of_PA")
     private String typeOfPA;
     @TableField("type_of_PA_description")
     private String typeOfPADescription;
@@ -33,6 +34,7 @@ public class MainData {
     private String faCognitiveEmotionalDomainOutcomesReported;
     @TableField("wellbeing_and_quality_of_life_outcomes_reported")
     private String wellbeingAndQualityOfLifeOutcomesReported;
+//    @TableField("other_publications_from_the_same_study_If_yes_specify")
     @TableField("other_publications_from_the_same_study_If_yes_specify")
     private String otherPublicationsFromTheSameStudyIfYesSpecify;
     private String authorYear;
