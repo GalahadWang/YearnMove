@@ -3,40 +3,39 @@ package com.comp5703.yearnmove.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.comp5703.yearnmove.DTO.articleMainFilter;
-import com.comp5703.yearnmove.common.Result;
-import com.comp5703.yearnmove.mapper.MainDataMapper;
-import com.comp5703.yearnmove.pojo.MainData;
-import com.comp5703.yearnmove.service.MainDataService;
+import com.comp5703.yearnmove.mapper.FilterMapper;
+import com.comp5703.yearnmove.pojo.Filter;
+import com.comp5703.yearnmove.service.FilterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 @Service
-public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> implements MainDataService{
-    private MainDataMapper mainDataMapper;
+public class FilterServiceImpl extends ServiceImpl<FilterMapper, Filter> implements FilterService {
+    private FilterMapper filterMapper;
     @Autowired
-    public MainDataServiceImpl(MainDataMapper mainDataMapper){
-        this.mainDataMapper = mainDataMapper;
+    public FilterServiceImpl(FilterMapper filterMapper){
+        this.filterMapper = filterMapper;
     }
     @Override
-    public List<MainData> returnArticleAll(articleMainFilter articleMainFilter){
-        QueryWrapper<MainData> queryWrapper = new QueryWrapper<>();
+    public List<Integer> returnRecordID(articleMainFilter articleMainFilter){
+        QueryWrapper<Filter> queryWrapper = new QueryWrapper<>();
         if(articleMainFilter.getPhysImpAsInclusionCriterion() != null && !articleMainFilter.getPhysImpAsInclusionCriterion().isEmpty()){
             queryWrapper.in("physImp_as_inclusion_criterion",articleMainFilter.getPhysImpAsInclusionCriterion());
         }
-        // CogImpLowMood_as_inclusion_criterion 条件
+        // CogImpLowMood_as_inclusion_criterion condition
         if (articleMainFilter.getCogImpLowMoodAsInclusionCriterion() != null && !articleMainFilter.getCogImpLowMoodAsInclusionCriterion().isEmpty()) {
             queryWrapper.in("CogImpLowMood_as_inclusion_criterion", articleMainFilter.getCogImpLowMoodAsInclusionCriterion());
         }
 
-        // type_of_PA 条件
+        // type_of_PA condition
         if (articleMainFilter.getTypeOfPA() != null && !articleMainFilter.getTypeOfPA().isEmpty()) {
             queryWrapper.in("type_of_PA", articleMainFilter.getTypeOfPA());
         }
 
-        // type_of_PA_description 条件
+        // type_of_PA_description condition
         if (articleMainFilter.getTypeOfPADescription() != null && !articleMainFilter.getTypeOfPADescription().isEmpty()) {
             queryWrapper.in("type_of_PA_description", articleMainFilter.getTypeOfPADescription());
         }
@@ -56,7 +55,7 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
             queryWrapper.in("falls_outcomes_reported", articleMainFilter.getFallsOutcomesReported());
         }
 
-        // Intrinsic_capacity_Physical_domain_outcomes_reported 条件
+        // Intrinsic_capacity_Physical_domain_outcomes_reported condition
         if (articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported() != null && !articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported().isEmpty()) {
             queryWrapper.in("Intrinsic_capacity_Physical_domain_outcomes_reported", articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported());
         }
@@ -66,41 +65,26 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
             queryWrapper.in("FA_Physical_domain_outcomes_reported", articleMainFilter.getFaPhysicalDomainOutcomesReported());
         }
 
-        // FA_Social_domain_outcomes_reported 条件
+        // FA_Social_domain_outcomes_reported condition
         if (articleMainFilter.getFaSocialDomainOutcomesReported() != null && !articleMainFilter.getFaSocialDomainOutcomesReported().isEmpty()) {
             queryWrapper.in("FA_Social_domain_outcomes_reported", articleMainFilter.getFaSocialDomainOutcomesReported());
         }
 
-        // FA_cognitive_emotional_domain_outcomes_reported 条件
+        // FA_cognitive_emotional_domain_outcomes_reported condition
         if (articleMainFilter.getFaCognitiveEmotionalDomainOutcomesReported() != null && !articleMainFilter.getFaCognitiveEmotionalDomainOutcomesReported().isEmpty()) {
             queryWrapper.in("FA_cognitive_emotional_domain_outcomes_reported", articleMainFilter.getFaCognitiveEmotionalDomainOutcomesReported());
         }
 
-        // wellbeingAndQualityOfLifeOutcomesReported 条件
+        // wellbeingAndQualityOfLifeOutcomesReported condition
         if (articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported() != null && !articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported().isEmpty()) {
             queryWrapper.in("wellbeing_and_quality_of_life_outcomes_reported", articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported());
         }
+        queryWrapper.select("record_id");
+        List<Filter> filters = filterMapper.selectList(queryWrapper);
+        List<Integer> recordIds = filters.stream()
+                .map(Filter::getRecordId)
+                .collect(Collectors.toList());
+        return recordIds;
 
-//        queryWrapper.in("CogImpLowMood_as_inclusion_criterion", articleMainFilter.getCogImpLowMoodAsInclusionCriterion());
-//        queryWrapper.in("type_of_PA",articleMainFilter.getTypeOfPA());
-//        queryWrapper.in("type_of_PA_description",articleMainFilter.getTypeOfPADescription());
-//        queryWrapper.in("primary_location",articleMainFilter.getPrimaryLocation());
-//        queryWrapper.in("PA_outcomes_reported",articleMainFilter.getPaOutcomesReported());
-//        queryWrapper.in("falls_outcomes_reported",articleMainFilter.getFallsOutcomesReported());
-//        queryWrapper.in("Intrinsic_capacity_Physical_domain_outcomes_reported",articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported());
-//        queryWrapper.in("FA_Physical_domain_outcomes_reported",articleMainFilter.getFaPhysicalDomainOutcomesReported());
-//        queryWrapper.in("FA_Social_domain_outcomes_reported",articleMainFilter.getFaSocialDomainOutcomesReported());
-//        queryWrapper.in("FA_cognitive_emotional_domain_outcomes_reported",articleMainFilter.getFaCognitiveEmotionalDomainOutcomesReported());
-//        queryWrapper.in("wellbeingAndQualityOfLifeOutcomesReported",articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported());
-
-        queryWrapper.select("first_author", "year","author_year","title","abstract","doi");
-        List<MainData> mainDataList = mainDataMapper.selectList(queryWrapper);
-//        queryWrapper.select("")
-        return mainDataList;
-//        if(mainDataList != null){
-//            return Result.success(mainDataList,"success");
-//        }
-//        return Result.error("can not find any articles");
     }
-
 }
