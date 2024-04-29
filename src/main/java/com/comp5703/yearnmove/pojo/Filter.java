@@ -1,12 +1,14 @@
 package com.comp5703.yearnmove.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
 @TableName(value = "Filter")
 public class Filter {
+    @TableId
     private Integer recordId;
     @TableField("physImp_as_inclusion_criterion")
     private String physImpAsInclusionCriterion;

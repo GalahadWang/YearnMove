@@ -1,6 +1,7 @@
 package com.comp5703.yearnmove.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.w3c.dom.Text;
@@ -8,6 +9,7 @@ import org.w3c.dom.Text;
 @Data
 @TableName(value = "main_data")
 public class MainData {
+    @TableId
     private Integer recordId;
     private String firstAuthor;
     private Integer year;
