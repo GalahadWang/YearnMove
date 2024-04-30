@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 @Service
-public class FallsOutcomesServicelmpl extends ServiceImpl<FallsOutcomesMapper, FallsOutcomes> implements FallsOutcomesService {
+public class FallsOutcomesServiceImpl extends ServiceImpl<FallsOutcomesMapper, FallsOutcomes> implements FallsOutcomesService {
     @Autowired
     private FallsOutcomesMapper fallsOutcomesMapper;
 
