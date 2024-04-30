@@ -29,10 +29,9 @@ public class PaOutcomesServiceImpl extends ServiceImpl<PaOutcomesMapper, PaOutco
         int totalPAPositiveTotal = 0;
         int domainPAPositiveTotal = 0;
 
-
         if (!recordIds.isEmpty()) {
             System.out.println(recordIds);
-            System.out.println(paOutcomesMapper.selectBatchIds(recordIds));
+//            System.out.println(paOutcomesMapper.selectBatchIds(recordIds));
             totalRecords = recordIds.size();
 
             // Call the selectBatchIds method of the paOutcomesMapper to get a list of PaOutcomes objects with the given recordIds
@@ -42,7 +41,7 @@ public class PaOutcomesServiceImpl extends ServiceImpl<PaOutcomesMapper, PaOutco
                 // Add the number of mVPA positive outcomes, Uptime positive outcomes, total PA positive outcomes, and domain positive outcomes to the corresponding variables
                 totalMvpaRecords+= outcome.getMvpaOutcomes();
                 totalUptimeRecords+= outcome.getUptimeOutcomes();
-                totalUptimeRecords+= outcome.getTotalPaOutcomes();
+                totalTotalPaRecords+= outcome.getTotalPaOutcomes();
                 totalDomainPaRecords+= outcome.getDomainOutcomes();
             }
             // Loop through each PaOutcomes object in the list
@@ -58,12 +57,23 @@ public class PaOutcomesServiceImpl extends ServiceImpl<PaOutcomesMapper, PaOutco
             }
         }
         Map<String, String> ratios = new HashMap<>();
+        double mvpaRatio = 0;
+        double upTimeRatio = 0;
+        double totalPARatio = 0;
+        double domainPARatio = 0;
         if (totalRecords > 0) {
-            double mvpaRatio = (double) mvpaPositiveTotal / totalMvpaRecords;
-            double upTimeRatio = (double) upTimePositiveTotal / totalUptimeRecords;
-            double totalPARatio = (double) totalPAPositiveTotal / totalTotalPaRecords;
-            double domainPARatio = (double) domainPAPositiveTotal / totalDomainPaRecords;
-
+            if(totalMvpaRecords != 0){
+                mvpaRatio = (double) mvpaPositiveTotal / totalMvpaRecords;
+            }
+            if(totalUptimeRecords != 0){
+                upTimeRatio = (double) upTimePositiveTotal / totalUptimeRecords;
+            }
+            if(totalTotalPaRecords != 0){
+                totalPARatio = (double) totalPAPositiveTotal / totalTotalPaRecords;
+            }
+            if(totalDomainPaRecords != 0){
+                domainPARatio = (double) domainPAPositiveTotal / totalDomainPaRecords;
+            }
             ratios.put("MVPA", String.format("%.2f%%", mvpaRatio * 100));
             ratios.put("Up Time", String.format("%.2f%%", upTimeRatio * 100));
             ratios.put("Total PA", String.format("%.2f%%", totalPARatio * 100));
