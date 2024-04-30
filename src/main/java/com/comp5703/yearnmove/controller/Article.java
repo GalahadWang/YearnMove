@@ -2,6 +2,8 @@ package com.comp5703.yearnmove.controller;
 
 import com.comp5703.yearnmove.DTO.articleMainFilter;
 import com.comp5703.yearnmove.common.Result;
+import com.comp5703.yearnmove.pojo.FallsOutcomes;
+import com.comp5703.yearnmove.service.FallsOutcomesService;
 import com.comp5703.yearnmove.service.FilterService;
 import com.comp5703.yearnmove.service.PaOutcomesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class Article {
     @Autowired
     private PaOutcomesService paOutcomesService;
 
+    @Autowired
+    private FallsOutcomesService fallsOutcomesService;
+
     @PostMapping("/find")
     public Result<List<Integer>> ArticleRocordId(@RequestBody articleMainFilter articleMainFilter){
         List<Integer> result = filterService.returnRecordID(articleMainFilter);
@@ -34,8 +39,16 @@ public class Article {
         if (recordIds == null || recordIds.isEmpty()) {
             return Result.error("No records found.");
         }
-        Map<String, String> outcomes = paOutcomesService.calculateOutcomeRatios(recordIds);
-        return Result.success(outcomes, "success");
+//        Map<String, String> outcomes = 0;
+        if(articleMainFilter.getPaOutcomesReported()!= null){
+            Map<String, String> outcomes = paOutcomesService.calculateOutcomeRatios(recordIds);
+            return Result.success(outcomes, "success");
+        }
+        if(articleMainFilter.getFallsOutcomesReported()!=null){
+            Map<String, String> outcomes = fallsOutcomesService.calculateOutcomeRatios(recordIds);
+            return Result.success(outcomes, "success");
+        }
+        return Result.error("You can only select one opinion");
     }
 
 }
