@@ -18,7 +18,8 @@ public class PaOutcomesServiceImpl extends ServiceImpl<PaOutcomesMapper, PaOutco
 
     @Override
     public Map<String, String> calculateOutcomeRatios(List<Integer> recordIds){
-        int totalRecords = recordIds.size();
+        // Initialize variables to store the total number of records, mVPA positive outcomes, Uptime positive outcomes, total PA positive outcomes, and domain positive outcomes
+        int totalRecords = 0;
         int mvpaPositiveTotal = 0;
         int upTimePositiveTotal = 0;
         int totalPAPositiveTotal = 0;
@@ -27,12 +28,24 @@ public class PaOutcomesServiceImpl extends ServiceImpl<PaOutcomesMapper, PaOutco
         if (!recordIds.isEmpty()) {
             System.out.println(recordIds);
             System.out.println(paOutcomesMapper.selectBatchIds(recordIds));
-            System.out.println(paOutcomesMapper.selectBatchIds(recordIds));
+
+            // Call the selectBatchIds method of the paOutcomesMapper to get a list of PaOutcomes objects with the given recordIds
             List<PaOutcomes> outcomes = paOutcomesMapper.selectBatchIds(recordIds);
+            // Loop through each PaOutcomes object in the list
+            for(PaOutcomes outcome : outcomes){
+                // Add the number of mVPA positive outcomes, Uptime positive outcomes, total PA positive outcomes, and domain positive outcomes to the corresponding variables
+                totalRecords+= outcome.getMvpaOutcomes() + outcome.getUptimeOutcomes()
+                                + outcome.getTotalPaOutcomes() + outcome.getDomainOutcomes();
+            }
+            // Loop through each PaOutcomes object in the list
             for (PaOutcomes outcome : outcomes) {
+                // Add the number of mVPA positive outcomes and mVPA positive non-outcomes to the mvpaPositiveTotal variable
                 mvpaPositiveTotal += outcome.getMvpaPostiveOutcomes() + outcome.getMvpaPostiveNonOutcomes();
+                // Add the number of Uptime positive outcomes and Uptime positive non-outcomes to the upTimePositiveTotal variable
                 upTimePositiveTotal += outcome.getUptimePostiveOutcomes() + outcome.getUptimePostiveNonOutcomes();
+                // Add the number of total PA positive outcomes and total PA positive non-outcomes to the totalPAPositiveTotal variable
                 totalPAPositiveTotal += outcome.getTotalPaPostiveOutcomes() + outcome.getTotalPaPostiveNonOutcomes();
+                // Add the number of domain positive outcomes and domain positive non-outcomes to the domainPAPositiveTotal variable
                 domainPAPositiveTotal += outcome.getDomainPositiveOutcomes() + outcome.getDomainPositiveNonOutcomes();
             }
         }

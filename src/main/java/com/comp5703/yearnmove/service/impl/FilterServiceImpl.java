@@ -79,11 +79,15 @@ public class FilterServiceImpl extends ServiceImpl<FilterMapper, Filter> impleme
         if (articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported() != null && !articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported().isEmpty()) {
             queryWrapper.in("wellbeing_and_quality_of_life_outcomes_reported", articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported());
         }
+        // Create a query wrapper to select the record_id column
         queryWrapper.select("record_id");
+        // Use the filterMapper to select all filters
         List<Filter> filters = filterMapper.selectList(queryWrapper);
+        // Create a list of recordIds from the filters
         List<Integer> recordIds = filters.stream()
                 .map(Filter::getRecordId)
                 .collect(Collectors.toList());
+        // Return the list of recordIds
         return recordIds;
 
     }

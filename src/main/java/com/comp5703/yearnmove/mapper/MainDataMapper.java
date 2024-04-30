@@ -6,4 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MainDataMapper extends BaseMapper<MainData> {
+    // This interface is used to create a mapper for the MainData table
 }
