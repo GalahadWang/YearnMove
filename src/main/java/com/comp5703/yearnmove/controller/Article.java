@@ -3,10 +3,7 @@ package com.comp5703.yearnmove.controller;
 import com.comp5703.yearnmove.DTO.articleMainFilter;
 import com.comp5703.yearnmove.common.Result;
 import com.comp5703.yearnmove.pojo.FallsOutcomes;
-import com.comp5703.yearnmove.service.FallsOutcomesService;
-import com.comp5703.yearnmove.service.FilterService;
-import com.comp5703.yearnmove.service.IntrinsicCapacityOutcomesService;
-import com.comp5703.yearnmove.service.PaOutcomesService;
+import com.comp5703.yearnmove.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +25,9 @@ public class Article {
 
     @Autowired
     private IntrinsicCapacityOutcomesService intrinsicCapacityOutcomesService;
+
+    @Autowired
+    private FaSocialOutcomesService faSocialOutcomesService;
 
     @PostMapping("/find")
     public Result<List<Integer>> ArticleRocordId(@RequestBody articleMainFilter articleMainFilter){
@@ -54,6 +54,10 @@ public class Article {
         }
         if(articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported()!=null){
             Map<String, String> outcomes = intrinsicCapacityOutcomesService.calculateOutcomeRatios(recordIds);
+            return Result.success(outcomes, "success");
+        }
+        if(articleMainFilter.getFaSocialDomainOutcomesReported()!=null){
+            Map<String, String> outcomes = faSocialOutcomesService.calculateOutcomeRatios(recordIds);
             return Result.success(outcomes, "success");
         }
         return Result.error("You can only select one opinion");
