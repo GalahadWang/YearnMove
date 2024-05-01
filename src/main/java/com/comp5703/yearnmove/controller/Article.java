@@ -29,6 +29,9 @@ public class Article {
     @Autowired
     private FaSocialOutcomesService faSocialOutcomesService;
 
+    @Autowired
+    private WellbeingOutcomesService wellbeingOutcomesService;
+
     @PostMapping("/find")
     public Result<List<Integer>> ArticleRocordId(@RequestBody articleMainFilter articleMainFilter){
         List<Integer> result = filterService.returnRecordID(articleMainFilter);
@@ -58,6 +61,10 @@ public class Article {
         }
         if(articleMainFilter.getFaSocialDomainOutcomesReported()!=null){
             Map<String, String> outcomes = faSocialOutcomesService.calculateOutcomeRatios(recordIds);
+            return Result.success(outcomes, "success");
+        }
+        if(articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported()!=null){
+            Map<String, String> outcomes = wellbeingOutcomesService.calculateOutcomeRatios(recordIds);
             return Result.success(outcomes, "success");
         }
         return Result.error("You can only select one opinion");

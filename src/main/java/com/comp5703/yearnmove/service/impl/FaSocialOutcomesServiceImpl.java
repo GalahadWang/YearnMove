@@ -39,7 +39,7 @@ public class FaSocialOutcomesServiceImpl extends ServiceImpl<FaSocialOutcomesMap
 
             for (FaSocialOutcomes outcome : outcomes) {
 
-                socialDomainPositiveTotal += outcome.getSocialDomainPostiveOutcomes() + outcome.getSocialDomainPostiveNonOutcomes();
+                socialDomainPositiveTotal += outcome.getSocialDomainPositiveOutcomes() + outcome.getSocialDomainPositiveNonOutcomes();
             }
         }
         Map<String, String> ratios = new HashMap<>();

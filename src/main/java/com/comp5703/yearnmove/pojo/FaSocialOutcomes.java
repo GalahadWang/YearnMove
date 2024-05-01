@@ -16,8 +16,8 @@ public class FaSocialOutcomes {
     @TableField("Social_Domain_Number_of_Outcomes")
     private Integer socialDomainOutcomes;
     @TableField("SD_Number_of_Positive_Significant_outcomes")
-    private Integer socialDomainPostiveOutcomes;
+    private Integer socialDomainPositiveOutcomes;
     @TableField("SD_Number_of_Positive_Non_significant_outcomes")
-    private Integer socialDomainPostiveNonOutcomes;
+    private Integer socialDomainPositiveNonOutcomes;
 
 }
