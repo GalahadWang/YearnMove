@@ -81,21 +81,10 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
             queryWrapper.in("wellbeing_and_quality_of_life_outcomes_reported", articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported());
         }
 
-//        queryWrapper.in("CogImpLowMood_as_inclusion_criterion", articleMainFilter.getCogImpLowMoodAsInclusionCriterion());
-//        queryWrapper.in("type_of_PA",articleMainFilter.getTypeOfPA());
-//        queryWrapper.in("type_of_PA_description",articleMainFilter.getTypeOfPADescription());
-//        queryWrapper.in("primary_location",articleMainFilter.getPrimaryLocation());
-//        queryWrapper.in("PA_outcomes_reported",articleMainFilter.getPaOutcomesReported());
-//        queryWrapper.in("falls_outcomes_reported",articleMainFilter.getFallsOutcomesReported());
-//        queryWrapper.in("Intrinsic_capacity_Physical_domain_outcomes_reported",articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported());
-//        queryWrapper.in("FA_Physical_domain_outcomes_reported",articleMainFilter.getFaPhysicalDomainOutcomesReported());
-//        queryWrapper.in("FA_Social_domain_outcomes_reported",articleMainFilter.getFaSocialDomainOutcomesReported());
-//        queryWrapper.in("FA_cognitive_emotional_domain_outcomes_reported",articleMainFilter.getFaCognitiveEmotionalDomainOutcomesReported());
-//        queryWrapper.in("wellbeingAndQualityOfLifeOutcomesReported",articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported());
-
-        queryWrapper.select("first_author", "year","author_year","title","abstract","doi");
+        queryWrapper.select("first_author", "year","author_year","title","doi");
         List<MainData> mainDataList = mainDataMapper.selectList(queryWrapper);
 //        queryWrapper.select("")
+        System.out.println("Size of mainDataList: " + mainDataList.size());
         return mainDataList;
 //        if(mainDataList != null){
 //            return Result.success(mainDataList,"success");
@@ -103,4 +92,32 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
 //        return Result.error("can not find any articles");
     }
 
+    @Override
+    public List<MainData> returnFirstColumn(articleMainFilter articleMainFilter){
+        QueryWrapper<MainData> queryWrapper = new QueryWrapper<>();
+
+        // type_of_PA 条件
+        if (articleMainFilter.getTypeOfPA() != null && !articleMainFilter.getTypeOfPA().isEmpty()) {
+            queryWrapper.in("type_of_PA", articleMainFilter.getTypeOfPA());
+        }
+
+        // type_of_PA_description 条件
+        if (articleMainFilter.getTypeOfPADescription() != null && !articleMainFilter.getTypeOfPADescription().isEmpty()) {
+            queryWrapper.in("type_of_PA_description", articleMainFilter.getTypeOfPADescription());
+        }
+
+        // 使用apply方法来确保recordid等于first_recordid
+        queryWrapper.apply("record_id = first_recordid");
+
+        queryWrapper.select("first_author", "year","author_year","title","doi");
+        List<MainData> mainDataList = mainDataMapper.selectList(queryWrapper);
+        // 打印列表的长度
+        System.out.println("Size of mainDataList: " + mainDataList.size());
+//        queryWrapper.select("")
+        return mainDataList;
+//        if(mainDataList != null){
+//            return Result.success(mainDataList,"success");
+//        }
+//        return Result.error("can not find any articles");
+    }
 }

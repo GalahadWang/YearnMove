@@ -38,4 +38,14 @@ public class MainDataController {
         }
         return Result.error("No");
     }
+
+    @PostMapping("/mainSearchFirstColumn")
+    public Result<List<MainData>> searchFisrtColumnArticles(@RequestBody articleMainFilter articleMainFilter){
+        List<MainData> ArticleList= mainDataService.returnFirstColumn(articleMainFilter);
+        if(ArticleList != null){
+            System.out.println(ArticleList);
+            return Result.success(ArticleList,"success");
+        }
+        return Result.error("No");
+    }
 }

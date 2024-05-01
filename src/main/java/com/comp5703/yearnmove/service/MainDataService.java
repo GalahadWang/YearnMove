@@ -10,4 +10,5 @@ import java.util.List;
 
 public interface MainDataService extends IService<MainData> {
     List<MainData> returnArticleAll(articleMainFilter articleMainFilter);
+    List<MainData> returnFirstColumn(articleMainFilter articleMainFilter);
 }

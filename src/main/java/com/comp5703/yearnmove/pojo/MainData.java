@@ -7,7 +7,7 @@ import lombok.Data;
 import org.w3c.dom.Text;
 
 @Data
-@TableName(value = "main_data")
+@TableName(value = "main_data_final")
 public class MainData {
     @TableId
     private Integer recordId;
@@ -52,4 +52,6 @@ public class MainData {
     private String remoteness;
     private Integer age;
     private String gender;
+    @TableField("first_recordid")
+    private Integer firstRecordid;
 }
