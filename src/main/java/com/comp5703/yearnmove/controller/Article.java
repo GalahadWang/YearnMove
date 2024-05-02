@@ -27,6 +27,9 @@ public class Article {
     private IntrinsicCapacityOutcomesService intrinsicCapacityOutcomesService;
 
     @Autowired
+    private FaPhysicalOutcomesService faPhysicalOutcomesService;
+
+    @Autowired
     private FaSocialOutcomesService faSocialOutcomesService;
 
     @Autowired
@@ -60,6 +63,10 @@ public class Article {
         }
         if(articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported()!=null){
             Map<String, String> outcomes = intrinsicCapacityOutcomesService.calculateOutcomeRatios(recordIds);
+            return Result.success(outcomes, "success");
+        }
+        if(articleMainFilter.getFaPhysicalDomainOutcomesReported()!=null){
+            Map<String, String> outcomes = faPhysicalOutcomesService.calculateOutcomeRatios(recordIds);
             return Result.success(outcomes, "success");
         }
         if(articleMainFilter.getFaSocialDomainOutcomesReported()!=null){
