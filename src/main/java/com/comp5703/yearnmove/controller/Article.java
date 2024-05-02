@@ -30,6 +30,9 @@ public class Article {
     private FaSocialOutcomesService faSocialOutcomesService;
 
     @Autowired
+    private FaCeOutcomesService faCeOutcomesService;
+
+    @Autowired
     private WellbeingOutcomesService wellbeingOutcomesService;
 
     @PostMapping("/find")
@@ -61,6 +64,10 @@ public class Article {
         }
         if(articleMainFilter.getFaSocialDomainOutcomesReported()!=null){
             Map<String, String> outcomes = faSocialOutcomesService.calculateOutcomeRatios(recordIds);
+            return Result.success(outcomes, "success");
+        }
+        if(articleMainFilter.getFaCognitiveEmotionalDomainOutcomesReported()!=null){
+            Map<String, String> outcomes = faCeOutcomesService.calculateOutcomeRatios(recordIds);
             return Result.success(outcomes, "success");
         }
         if(articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported()!=null){
