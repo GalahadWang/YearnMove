@@ -1,9 +1,12 @@
 package com.comp5703.yearnmove.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.comp5703.yearnmove.DTO.FigFiveFilter;
 import com.comp5703.yearnmove.DTO.articleMainFilter;
 import com.comp5703.yearnmove.common.Result;
+import com.comp5703.yearnmove.pojo.FigFive;
 import com.comp5703.yearnmove.pojo.MainData;
+import com.comp5703.yearnmove.service.FigFiveService;
 import com.comp5703.yearnmove.service.MainDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +20,9 @@ import java.util.List;
 public class MainDataController {
     @Autowired
     private MainDataService mainDataService;
+
+    @Autowired
+    private FigFiveService figFiveService;
 
     @PostMapping("/test")
     public Result<MainData> FindById(@RequestBody MainData mainData){
@@ -42,6 +48,28 @@ public class MainDataController {
     @PostMapping("/mainSearchFirstColumn")
     public Result<List<MainData>> searchFisrtColumnArticles(@RequestBody articleMainFilter articleMainFilter){
         List<MainData> ArticleList= mainDataService.returnFirstColumn(articleMainFilter);
+        if(ArticleList != null){
+            System.out.println(ArticleList);
+            return Result.success(ArticleList,"success");
+        }
+        return Result.error("No");
+    }
+
+    @PostMapping("/figFive")
+    public Result<List<FigFive>> searchFigFiveArticles(@RequestBody FigFiveFilter figFive){
+        System.out.println(figFive);
+        List<FigFive> ArticleList = figFiveService.returnArticleAll(figFive);
+        if(ArticleList != null){
+            System.out.println(ArticleList);
+            return Result.success(ArticleList,"success");
+        }
+        return Result.error("No");
+    }
+
+    @PostMapping("/figFiveFirstColumn")
+    public Result<List<FigFive>> searchFigFiveFirstColumnArticles(@RequestBody FigFiveFilter figFive){
+        System.out.println(figFive);
+        List<FigFive> ArticleList = figFiveService.returnFirstColumn(figFive);
         if(ArticleList != null){
             System.out.println(ArticleList);
             return Result.success(ArticleList,"success");
