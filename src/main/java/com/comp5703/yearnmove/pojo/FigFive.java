@@ -14,16 +14,16 @@ public class FigFive {
     private Integer firstRecordid;
     @TableField("type_of_PA_description")
     private String typeOfPADescription;
-//    @TableField("Balance")
-    private String Balance;
-//    @TableField("Strength")
-    private String Strength;
-//    @TableField("Walking")
-    private String Walking;
-    @TableField("P_Endurance")
-    private String Endurance;
+    @TableField("Balance")
+    private String balance;
+    @TableField("Strength")
+    private String strength;
+    @TableField("Walking")
+    private String walking;
+    @TableField("Endurance")
+    private String endurance;
     @TableField("Other_publications")
-    private String OtherPublications;
+    private String otherPublications;
     private String paOutcomesReported;
     @TableField("falls_outcomes_reported")
     private String fallsOutcomesReported;
