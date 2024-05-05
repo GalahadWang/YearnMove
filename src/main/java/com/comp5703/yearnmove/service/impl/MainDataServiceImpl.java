@@ -96,17 +96,17 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
     public List<MainData> returnFirstColumn(articleMainFilter articleMainFilter){
         QueryWrapper<MainData> queryWrapper = new QueryWrapper<>();
 
-        // type_of_PA 条件
+        // type_of_PA condition
         if (articleMainFilter.getTypeOfPA() != null && !articleMainFilter.getTypeOfPA().isEmpty()) {
             queryWrapper.in("type_of_PA", articleMainFilter.getTypeOfPA());
         }
 
-        // type_of_PA_description 条件
+        // type_of_PA_description condition
         if (articleMainFilter.getTypeOfPADescription() != null && !articleMainFilter.getTypeOfPADescription().isEmpty()) {
             queryWrapper.in("type_of_PA_description", articleMainFilter.getTypeOfPADescription());
         }
 
-        // 使用apply方法来确保recordid等于first_recordid
+        // Use the apply method to ensure that the recordid equals the first recordid
         queryWrapper.apply("record_id = first_recordid");
 
         queryWrapper.select("first_author", "year","author_year","title","doi");
