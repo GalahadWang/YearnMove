@@ -81,7 +81,7 @@ public class PaOutcomesServiceImpl extends ServiceImpl<PaOutcomesMapper, PaOutco
 
 
             double overallRatio = (mvpaRatio + upTimeRatio + totalPARatio + domainPARatio) / 4;
-            ratios.put("Overall PA Outcome", String.format("%.2f%%", overallRatio * 100));
+            ratios.put("Overall Outcome", String.format("%.2f%%", overallRatio * 100));
         }
 
         return ratios;

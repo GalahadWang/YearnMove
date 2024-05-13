@@ -66,7 +66,7 @@ public class FaCeOutcomesServiceImpl extends ServiceImpl<FaCeOutcomesMapper, FaC
 
 
             double overallRatio = (cognitiveRatio + emotionalRatio) / 2;
-            ratios.put("Overall FA CE Outcome", String.format("%.2f%%", overallRatio * 100));
+            ratios.put("Overall Outcome", String.format("%.2f%%", overallRatio * 100));
         }
 
         return ratios;

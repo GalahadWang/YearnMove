@@ -61,7 +61,7 @@ public class FallsOutcomesServiceImpl extends ServiceImpl<FallsOutcomesMapper, F
 
 
             double overallRatio = (rofRatio + friRatio ) / 2;
-            ratios.put("Overall Falls Outcome", String.format("%.2f%%", overallRatio * 100));
+            ratios.put("Overall Outcome", String.format("%.2f%%", overallRatio * 100));
         }
 
         return ratios;

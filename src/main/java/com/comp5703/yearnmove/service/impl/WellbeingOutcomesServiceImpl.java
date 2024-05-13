@@ -50,10 +50,10 @@ public class WellbeingOutcomesServiceImpl extends ServiceImpl<WellbeingOutcomesM
                 wellbeingAndQoLRatio = (double) wellbeingAndQoLPositiveTotal / totalWellbeingAndQoLRecords;
             }
 
-            ratios.put("Wellbeing", String.format("%.2f%%", wellbeingAndQoLRatio * 100));
+//            ratios.put("Wellbeing", String.format("%.2f%%", wellbeingAndQoLRatio * 100));
 
             double overallRatio = wellbeingAndQoLRatio ;
-            ratios.put("Overall Wellbeing Outcome", String.format("%.2f%%", overallRatio * 100));
+            ratios.put("Overall Outcome", String.format("%.2f%%", overallRatio * 100));
         }
 
         return ratios;

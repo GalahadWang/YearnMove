@@ -50,10 +50,10 @@ public class FaSocialOutcomesServiceImpl extends ServiceImpl<FaSocialOutcomesMap
                 socialDomainRatio = (double) socialDomainPositiveTotal / totalSocialDomainRecords;
             }
 
-            ratios.put("MVPA", String.format("%.2f%%", socialDomainRatio * 100));
+//            ratios.put("MVPA", String.format("%.2f%%", socialDomainRatio * 100));
 
             double overallRatio = socialDomainRatio ;
-            ratios.put("Overall PA Outcome", String.format("%.2f%%", overallRatio * 100));
+            ratios.put("Overall Outcome", String.format("%.2f%%", overallRatio * 100));
         }
 
         return ratios;

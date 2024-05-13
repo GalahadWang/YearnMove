@@ -89,7 +89,7 @@ public class FaPhysicalOutcomesServiceImpl extends ServiceImpl<FaPhysicalOutcome
 
 
             double overallRatio = (mobilityBalanceRatio + selfCareRatio + overallFunctionRatio + otherRatio ) / 4;
-            ratios.put("Overall FA Physical Outcome", String.format("%.2f%%", overallRatio * 100));
+            ratios.put("Overall Outcome", String.format("%.2f%%", overallRatio * 100));
         }
 
         return ratios;

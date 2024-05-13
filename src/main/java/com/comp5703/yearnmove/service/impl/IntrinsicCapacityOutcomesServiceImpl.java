@@ -114,7 +114,7 @@ public class IntrinsicCapacityOutcomesServiceImpl extends ServiceImpl<IntrinsicC
 
 
             double overallRatio = (bmdRatio + bcRatio + ciRatio + strengthRatio + fitnessRatio + painRatio + otherRatio) / 7;
-            ratios.put("Overall Intrinsic Capacity Outcome", String.format("%.2f%%", overallRatio * 100));
+            ratios.put("Overall Outcome", String.format("%.2f%%", overallRatio * 100));
         }
 
         return ratios;
