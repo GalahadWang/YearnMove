@@ -74,10 +74,10 @@ public class PaOutcomesServiceImpl extends ServiceImpl<PaOutcomesMapper, PaOutco
             if(totalDomainPaRecords != 0){
                 domainPARatio = (double) domainPAPositiveTotal / totalDomainPaRecords;
             }
-            ratios.put("Multicomponent Physical Activity", String.format("%.2f%%", mvpaRatio * 100));
+            ratios.put("MVPA-Multicomponent Physical Activity", String.format("%.2f%%", mvpaRatio * 100));
             ratios.put("Up Time", String.format("%.2f%%", upTimeRatio * 100));
-            ratios.put("Total Physical Activity", String.format("%.2f%%", totalPARatio * 100));
-            ratios.put("Domains of Physical Activity", String.format("%.2f%%", domainPARatio * 100));
+            ratios.put("Total PA-Total Physical Activity", String.format("%.2f%%", totalPARatio * 100));
+            ratios.put("Domains of PA-Domains of Physical Activity", String.format("%.2f%%", domainPARatio * 100));
 
 
             double overallRatio = (mvpaRatio + upTimeRatio + totalPARatio + domainPARatio) / 4;
