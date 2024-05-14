@@ -5,8 +5,10 @@ import com.comp5703.yearnmove.DTO.FigFiveFilter;
 import com.comp5703.yearnmove.DTO.articleMainFilter;
 import com.comp5703.yearnmove.common.Result;
 import com.comp5703.yearnmove.pojo.FigFive;
+import com.comp5703.yearnmove.pojo.FirstColumn;
 import com.comp5703.yearnmove.pojo.MainData;
 import com.comp5703.yearnmove.service.FigFiveService;
+import com.comp5703.yearnmove.service.FirstColumnService;
 import com.comp5703.yearnmove.service.MainDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,9 @@ import java.util.List;
 public class MainDataController {
     @Autowired
     private MainDataService mainDataService;
+
+    @Autowired
+    private FirstColumnService firstColumnService;
 
     @Autowired
     private FigFiveService figFiveService;
@@ -45,11 +50,20 @@ public class MainDataController {
         return Result.error("No");
     }
 
+//    @PostMapping("/mainSearchFirstColumn")
+//    public Result<List<MainData>> searchFisrtColumnArticles(@RequestBody articleMainFilter articleMainFilter){
+//        List<MainData> ArticleList= mainDataService.returnFirstColumn(articleMainFilter);
+//        if(ArticleList != null){
+//            System.out.println(ArticleList);
+//            return Result.success(ArticleList,"success");
+//        }
+//        return Result.error("No");
+//    }
     @PostMapping("/mainSearchFirstColumn")
-    public Result<List<MainData>> searchFisrtColumnArticles(@RequestBody articleMainFilter articleMainFilter){
-        List<MainData> ArticleList= mainDataService.returnFirstColumn(articleMainFilter);
+    public Result<List<FirstColumn>> searchFisrtColumnArticles(@RequestBody articleMainFilter articleMainFilter){
+        List<FirstColumn> ArticleList= firstColumnService.returnFirstColumn(articleMainFilter);
         if(ArticleList != null){
-            System.out.println(ArticleList);
+//            System.out.println(ArticleList);
             return Result.success(ArticleList,"success");
         }
         return Result.error("No");

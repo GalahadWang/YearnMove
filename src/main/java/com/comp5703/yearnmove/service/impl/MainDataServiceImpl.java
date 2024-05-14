@@ -113,11 +113,8 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
         List<MainData> mainDataList = mainDataMapper.selectList(queryWrapper);
         // 打印列表的长度
         System.out.println("Size of mainDataList: " + mainDataList.size());
-//        queryWrapper.select("")
         return mainDataList;
-//        if(mainDataList != null){
-//            return Result.success(mainDataList,"success");
-//        }
-//        return Result.error("can not find any articles");
+
+
     }
 }
