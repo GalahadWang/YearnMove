@@ -82,7 +82,7 @@ public class FaPhysicalOutcomesServiceImpl extends ServiceImpl<FaPhysicalOutcome
             if (totalOtherRecords != 0) {
                 otherRatio = (double) otherPositiveTotal / totalOtherRecords;
             }
-            ratios.put("Mobility Balance", String.format("%.2f%%", mobilityBalanceRatio * 100));
+            ratios.put("Mobility & Balance", String.format("%.2f%%", mobilityBalanceRatio * 100));
             ratios.put("Self Care", String.format("%.2f%%", selfCareRatio * 100));
             ratios.put("Overall Function", String.format("%.2f%%", overallFunctionRatio * 100));
             ratios.put("Other", String.format("%.2f%%", otherRatio * 100));

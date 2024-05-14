@@ -60,8 +60,8 @@ public class FaCeOutcomesServiceImpl extends ServiceImpl<FaCeOutcomesMapper, FaC
             if(totalEmotionalRecords != 0){
                 emotionalRatio = (double) emotionalPositiveTotal / totalEmotionalRecords;
             }
-            ratios.put("Cognitive", String.format("%.2f%%", cognitiveRatio * 100));
-            ratios.put("Emotional", String.format("%.2f%%", emotionalRatio * 100));
+            ratios.put("Cognitive-Functional ability Cognitive domain", String.format("%.2f%%", cognitiveRatio * 100));
+            ratios.put("Emotional-Functional ability Emotional domain", String.format("%.2f%%", emotionalRatio * 100));
 
 
 
