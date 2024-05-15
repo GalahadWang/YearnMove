@@ -7,9 +7,11 @@ import com.comp5703.yearnmove.common.Result;
 import com.comp5703.yearnmove.pojo.FigFive;
 import com.comp5703.yearnmove.pojo.FirstColumn;
 import com.comp5703.yearnmove.pojo.MainData;
+import com.comp5703.yearnmove.pojo.SpecialValue;
 import com.comp5703.yearnmove.service.FigFiveService;
 import com.comp5703.yearnmove.service.FirstColumnService;
 import com.comp5703.yearnmove.service.MainDataService;
+import com.comp5703.yearnmove.service.SpecialValueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +30,9 @@ public class MainDataController {
 
     @Autowired
     private FigFiveService figFiveService;
+
+    @Autowired
+    private SpecialValueService specialValueService;
 
     @PostMapping("/test")
     public Result<MainData> FindById(@RequestBody MainData mainData){
@@ -62,6 +67,16 @@ public class MainDataController {
     @PostMapping("/mainSearchFirstColumn")
     public Result<List<FirstColumn>> searchFisrtColumnArticles(@RequestBody articleMainFilter articleMainFilter){
         List<FirstColumn> ArticleList= firstColumnService.returnFirstColumn(articleMainFilter);
+        if(ArticleList != null){
+//            System.out.println(ArticleList);
+            return Result.success(ArticleList,"success");
+        }
+        return Result.error("No");
+    }
+
+    @PostMapping("/specialValue")
+    public Result<List<SpecialValue>> searchFisrtColumnArticles(@RequestBody Integer number){
+        List<SpecialValue> ArticleList=specialValueService.returnSpecialValue(number);
         if(ArticleList != null){
 //            System.out.println(ArticleList);
             return Result.success(ArticleList,"success");
