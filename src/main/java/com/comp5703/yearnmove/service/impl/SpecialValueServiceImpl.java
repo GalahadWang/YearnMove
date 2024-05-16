@@ -2,6 +2,7 @@ package com.comp5703.yearnmove.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.comp5703.yearnmove.DTO.CircleNum;
 import com.comp5703.yearnmove.mapper.SpecialValueMapper;
 import com.comp5703.yearnmove.pojo.SpecialValue;
 import com.comp5703.yearnmove.service.SpecialValueService;
@@ -17,7 +18,8 @@ public class SpecialValueServiceImpl extends ServiceImpl<SpecialValueMapper, Spe
     public SpecialValueServiceImpl(SpecialValueMapper specialValueMapper) {this.specialValueMapper = specialValueMapper;}
 
     @Override
-    public List<SpecialValue> returnSpecialValue(Integer number){
+    public List<SpecialValue> returnSpecialValue(CircleNum Circlenumber){
+        Integer number = Circlenumber.getNumber();
         QueryWrapper<SpecialValue> queryWrapper = new QueryWrapper<>();
         if(number == 1){
             queryWrapper.between("record_id",1,24);

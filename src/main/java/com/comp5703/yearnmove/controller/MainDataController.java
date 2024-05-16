@@ -1,6 +1,7 @@
 package com.comp5703.yearnmove.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.comp5703.yearnmove.DTO.CircleNum;
 import com.comp5703.yearnmove.DTO.FigFiveFilter;
 import com.comp5703.yearnmove.DTO.articleMainFilter;
 import com.comp5703.yearnmove.common.Result;
@@ -75,8 +76,8 @@ public class MainDataController {
     }
 
     @PostMapping("/specialValue")
-    public Result<List<SpecialValue>> searchFisrtColumnArticles(@RequestBody Integer number){
-        List<SpecialValue> ArticleList=specialValueService.returnSpecialValue(number);
+    public Result<List<SpecialValue>> searchFisrtColumnArticles(@RequestBody CircleNum circlenumber){
+        List<SpecialValue> ArticleList=specialValueService.returnSpecialValue(circlenumber);
         if(ArticleList != null){
 //            System.out.println(ArticleList);
             return Result.success(ArticleList,"success");
