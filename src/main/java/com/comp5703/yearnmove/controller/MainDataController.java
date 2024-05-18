@@ -50,7 +50,7 @@ public class MainDataController {
     public Result<List<MainData>> searchArticles(@RequestBody articleMainFilter articleMainFilter){
         List<MainData> ArticleList= mainDataService.returnArticleAll(articleMainFilter);
         if(ArticleList != null){
-            System.out.println(ArticleList);
+//            System.out.println(ArticleList);
             return Result.success(ArticleList,"success");
         }
         return Result.error("No");
@@ -90,7 +90,7 @@ public class MainDataController {
         System.out.println(figFive);
         List<FigFive> ArticleList = figFiveService.returnArticleAll(figFive);
         if(ArticleList != null){
-            System.out.println(ArticleList);
+//            System.out.println(ArticleList);
             return Result.success(ArticleList,"success");
         }
         return Result.error("No");
@@ -101,7 +101,7 @@ public class MainDataController {
         System.out.println(figFive);
         List<FigFive> ArticleList = figFiveService.returnFirstColumn(figFive);
         if(ArticleList != null){
-            System.out.println(ArticleList);
+//            System.out.println(ArticleList);
             return Result.success(ArticleList,"success");
         }
         return Result.error("No");
