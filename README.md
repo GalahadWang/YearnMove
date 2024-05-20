@@ -17,12 +17,14 @@ YearnMove is a backend project developed with Spring Boot 3, designed to manage 
 
 ## Installation and Execution
 1. Clone the repository to your local machine:
+```
 git clone 
-2. Navigate to the project directory:
+```
+3. Navigate to the project directory:
 cd YearnMove
-3. Build the project with Maven to resolve dependencies and compile the source code:
+4. Build the project with Maven to resolve dependencies and compile the source code:
 mvn clean install
-4. Run the application using Maven, which will start the embedded web server and initialize the application:
+5. Run the application using Maven, which will start the embedded web server and initialize the application:
 mvn spring-boot:run
 
 ## Project Structure
