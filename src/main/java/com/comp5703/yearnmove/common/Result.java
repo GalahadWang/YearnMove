@@ -26,5 +26,13 @@ public class Result<T> {
         r.code = 50000;
         return r;
     }
+
+    public static <T> Result<T> error(T object, String message) {
+        Result<T> r = new Result<T>();
+        r.data = object;
+        r.code = 50000;
+        r.message = message;
+        return r;
+    }
 }
 

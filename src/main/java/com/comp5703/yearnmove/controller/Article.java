@@ -7,6 +7,7 @@ import com.comp5703.yearnmove.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,9 +49,14 @@ public class Article {
     }
     @PostMapping("/calculateOutcomes")
     public Result<Map<String, String>> calculateOutcomes(@RequestBody articleMainFilter articleMainFilter) {
+        System.out.println(articleMainFilter);
         List<Integer> recordIds = filterService.returnRecordID(articleMainFilter);
+
         if (recordIds == null || recordIds.isEmpty()) {
-            return Result.error("No records found.");
+            Map<String, String> ratios = new HashMap<>();
+            double overallRatio =0;
+            ratios.put("Overall Outcome", String.format("%.2f%%", overallRatio * 100));
+            return Result.error(ratios,"No records found");
         }
 //        Map<String, String> outcomes = 0;
         if(articleMainFilter.getPaOutcomesReported()!= null){
