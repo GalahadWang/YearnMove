@@ -20,14 +20,21 @@ YearnMove is a backend project developed with Spring Boot 3, designed to manage 
 ```
 git clone 
 ```
-3. Navigate to the project directory:
+2. Navigate to the project directory:
+```
 cd YearnMove
-4. Build the project with Maven to resolve dependencies and compile the source code:
+```
+3. Build the project with Maven to resolve dependencies and compile the source code:
+```
 mvn clean install
-5. Run the application using Maven, which will start the embedded web server and initialize the application:
+```
+4. Run the application using Maven, which will start the embedded web server and initialize the application:
+```
 mvn spring-boot:run
+```
 
 ## Project Structure
+
 The project is structured as follows:
 - `src/main/java` - Contains all Java source files organized by packages for controllers, services, DTOs, and data mappers.
 - `src/main/resources` - Includes configuration files like `application.properties` which configure the behavior of the application.
