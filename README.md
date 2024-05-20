@@ -32,7 +32,13 @@ mvn clean install
 ```
 mvn spring-boot:run
 ```
-
+Alternatively, you can run the main class directly:
+* Navigate to the src/main/java/com/comp5703/yearnmove directory.
+* Open YearnMoveApplication.java.
+* Run the YearnMoveApplication class from your IDE (e.g., IntelliJ IDEA, Eclipse) or using the command line:
+```
+java -cp target/classes com.comp5703.yearnmove.YearnMoveApplication
+```
 ## Project Structure
 
 The project is structured as follows:
