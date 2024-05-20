@@ -26,7 +26,7 @@ public class WellbeingOutcomesServiceImpl extends ServiceImpl<WellbeingOutcomesM
         int wellbeingAndQoLPositiveTotal = 0;
 
         if (!recordIds.isEmpty()) {
-
+            System.out.println(recordIds);
             totalRecords = recordIds.size();
 
             List<WellbeingOutcomes> outcomes = wellbeingOutcomesMapper.selectBatchIds(recordIds);

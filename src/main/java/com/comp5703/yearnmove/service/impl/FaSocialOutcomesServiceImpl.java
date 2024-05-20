@@ -26,7 +26,7 @@ public class FaSocialOutcomesServiceImpl extends ServiceImpl<FaSocialOutcomesMap
         int socialDomainPositiveTotal = 0;
 
         if (!recordIds.isEmpty()) {
-
+            System.out.println(recordIds);
             totalRecords = recordIds.size();
 
             List<FaSocialOutcomes> outcomes = faSocialOutcomesMapper.selectBatchIds(recordIds);
