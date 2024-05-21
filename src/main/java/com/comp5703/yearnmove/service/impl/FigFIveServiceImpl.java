@@ -42,7 +42,7 @@ public class FigFIveServiceImpl extends ServiceImpl<FigFiveMapper, FigFive> impl
             queryWrapper.in("falls_outcomes_reported", figFive.getFallsOutcomesReported());
         }
 
-        // Intrinsic_capacity_Physical_domain_outcomes_reported 条件
+        // Intrinsic_capacity_Physical_domain_outcomes_reported 
         if (figFive.getIntrinsicCapacityPhysicalDomainOutcomesReported() != null && !figFive.getIntrinsicCapacityPhysicalDomainOutcomesReported().isEmpty()) {
             queryWrapper.in("Intrinsic_capacity_Physical_domain_outcomes_reported", figFive.getIntrinsicCapacityPhysicalDomainOutcomesReported());
         }
@@ -52,17 +52,17 @@ public class FigFIveServiceImpl extends ServiceImpl<FigFiveMapper, FigFive> impl
             queryWrapper.in("FA_Physical_domain_outcomes_reported", figFive.getFaPhysicalDomainOutcomesReported());
         }
 
-        // FA_Social_domain_outcomes_reported 条件
+        // FA_Social_domain_outcomes_reported
         if (figFive.getFaSocialDomainOutcomesReported() != null && !figFive.getFaSocialDomainOutcomesReported().isEmpty()) {
             queryWrapper.in("FA_Social_domain_outcomes_reported", figFive.getFaSocialDomainOutcomesReported());
         }
 
-        // FA_cognitive_emotional_domain_outcomes_reported 条件
+        // FA_cognitive_emotional_domain_outcomes_reported 
         if (figFive.getFaCognitiveEmotionalDomainOutcomesReported() != null && !figFive.getFaCognitiveEmotionalDomainOutcomesReported().isEmpty()) {
             queryWrapper.in("FA_cognitive_emotional_domain_outcomes_reported", figFive.getFaCognitiveEmotionalDomainOutcomesReported());
         }
 
-        // wellbeingAndQualityOfLifeOutcomesReported 条件
+        // wellbeingAndQualityOfLifeOutcomesReported 
         if (figFive.getWellbeingAndQualityOfLifeOutcomesReported() != null && !figFive.getWellbeingAndQualityOfLifeOutcomesReported().isEmpty()) {
             queryWrapper.in("wellbeing_and_quality_of_life_outcomes_reported", figFive.getWellbeingAndQualityOfLifeOutcomesReported());
         }
