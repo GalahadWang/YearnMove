@@ -26,17 +26,17 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
         if(articleMainFilter.getPhysImpAsInclusionCriterion() != null && !articleMainFilter.getPhysImpAsInclusionCriterion().isEmpty()){
             queryWrapper.in("physImp_as_inclusion_criterion",articleMainFilter.getPhysImpAsInclusionCriterion());
         }
-        // CogImpLowMood_as_inclusion_criterion 条件
+        // CogImpLowMood_as_inclusion_criterion 
         if (articleMainFilter.getCogImpLowMoodAsInclusionCriterion() != null && !articleMainFilter.getCogImpLowMoodAsInclusionCriterion().isEmpty()) {
             queryWrapper.in("CogImpLowMood_as_inclusion_criterion", articleMainFilter.getCogImpLowMoodAsInclusionCriterion());
         }
 
-        // type_of_PA 条件
+        // type_of_PA 
         if (articleMainFilter.getTypeOfPA() != null && !articleMainFilter.getTypeOfPA().isEmpty()) {
             queryWrapper.in("type_of_PA", articleMainFilter.getTypeOfPA());
         }
 
-        // type_of_PA_description 条件
+        // type_of_PA_description 
         if (articleMainFilter.getTypeOfPADescription() != null && !articleMainFilter.getTypeOfPADescription().isEmpty()) {
             queryWrapper.in("type_of_PA_description", articleMainFilter.getTypeOfPADescription());
         }
@@ -56,7 +56,7 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
             queryWrapper.in("falls_outcomes_reported", articleMainFilter.getFallsOutcomesReported());
         }
 
-        // Intrinsic_capacity_Physical_domain_outcomes_reported 条件
+        // Intrinsic_capacity_Physical_domain_outcomes_reported
         if (articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported() != null && !articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported().isEmpty()) {
             queryWrapper.in("Intrinsic_capacity_Physical_domain_outcomes_reported", articleMainFilter.getIntrinsicCapacityPhysicalDomainOutcomesReported());
         }
@@ -66,17 +66,17 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
             queryWrapper.in("FA_Physical_domain_outcomes_reported", articleMainFilter.getFaPhysicalDomainOutcomesReported());
         }
 
-        // FA_Social_domain_outcomes_reported 条件
+        // FA_Social_domain_outcomes_reported 
         if (articleMainFilter.getFaSocialDomainOutcomesReported() != null && !articleMainFilter.getFaSocialDomainOutcomesReported().isEmpty()) {
             queryWrapper.in("FA_Social_domain_outcomes_reported", articleMainFilter.getFaSocialDomainOutcomesReported());
         }
 
-        // FA_cognitive_emotional_domain_outcomes_reported 条件
+        // FA_cognitive_emotional_domain_outcomes_reported
         if (articleMainFilter.getFaCognitiveEmotionalDomainOutcomesReported() != null && !articleMainFilter.getFaCognitiveEmotionalDomainOutcomesReported().isEmpty()) {
             queryWrapper.in("FA_cognitive_emotional_domain_outcomes_reported", articleMainFilter.getFaCognitiveEmotionalDomainOutcomesReported());
         }
 
-        // wellbeingAndQualityOfLifeOutcomesReported 条件
+        // wellbeingAndQualityOfLifeOutcomesReported 
         if (articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported() != null && !articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported().isEmpty()) {
             queryWrapper.in("wellbeing_and_quality_of_life_outcomes_reported", articleMainFilter.getWellbeingAndQualityOfLifeOutcomesReported());
         }
@@ -111,7 +111,7 @@ public class MainDataServiceImpl extends ServiceImpl<MainDataMapper, MainData> i
 
         queryWrapper.select("first_author", "year","author_year","title","doi");
         List<MainData> mainDataList = mainDataMapper.selectList(queryWrapper);
-        // 打印列表的长度
+     
         System.out.println("Size of mainDataList: " + mainDataList.size());
         return mainDataList;
 
