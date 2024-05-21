@@ -38,7 +38,7 @@ public class FirstColumnServiceImpl extends ServiceImpl<FirstColumnMapper,FirstC
 
         queryWrapper.select("first_author", "year","author_year","title","doi");
         List<FirstColumn> mainDataList = firstColumnMapper.selectList(queryWrapper);
-        // 打印列表的长度
+     
         System.out.println("Size of mainDataList: " + mainDataList.size());
         return mainDataList;
     }
