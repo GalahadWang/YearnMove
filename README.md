@@ -1,7 +1,7 @@
 # YearnMove Project
 
 ## Project Overview
-YearnMove is a backend project developed with Spring Boot 3, designed to manage and process data through various services and controllers.
+YearnMove is a backend project developed with Spring Boot 3, designed to manage and process data through various services and controllers. It facilitates the **analysis and evaluation of physical activity programs**, computing health outcome ratios across cognitive, emotional, physical, social, and wellbeing domains.
 
 ## Technology Stack
 - **Spring Boot 3**
@@ -17,33 +17,58 @@ YearnMove is a backend project developed with Spring Boot 3, designed to manage 
 
 ## Installation and Execution
 1. Clone the repository to your local machine:
-```
-git clone 
-```
+   ```sh
+   git clone <repository-url>
+   ```
 2. Navigate to the project directory:
-```
-cd YearnMove
-```
+   ```sh
+   cd YearnMove
+   ```
 3. Build the project with Maven to resolve dependencies and compile the source code:
-```
-mvn clean install
-```
+   ```sh
+   mvn clean install
+   ```
 4. Run the application using Maven, which will start the embedded web server and initialize the application:
-```
-mvn spring-boot:run
-```
-Alternatively, you can run the main class directly:
-* Navigate to the src/main/java/com/comp5703/yearnmove directory.
-* Open YearnMoveApplication.java.
-* Run the YearnMoveApplication class from your IDE (e.g., IntelliJ IDEA, Eclipse) or using the command line:
-```
-java -cp target/classes com.comp5703.yearnmove.YearnMoveApplication
-```
+   ```sh
+   mvn spring-boot:run
+   ```
+
+
 ## Project Structure
+```
+yearnmove_project
+│-- .idea/
+│-- .mvn/
+│-- src/
+│   ├── main/java/com/comp5703/yearnmove/
+│   │   ├── common/             # Common utilities
+│   │   ├── config/             # Application configurations
+│   │   ├── controller/         # API controllers (Article, Main Data, Outcomes)
+│   │   ├── filter/             # CORS filter
+│   │   ├── mapper/             # Database mappers (MyBatis-Plus)
+│   │   ├── pojo/               # Data objects (DTOs, Entities)
+│   │   │   ├── dto/            # Data Transfer Objects
+│   │   │   ├── vo/             # View Objects (Requests, Responses)
+│   │   ├── service/            # Business logic layer
+│   │   │   ├── impl/           # Service implementations
+│   │   ├── utils/              # Utility classes
+│   │   ├── YearnMoveApplication.java # Main Spring Boot application
+│-- resources/                  # Configuration and static resources
+│-- test/                        # Unit and integration tests
+│-- target/                      # Compiled output
+│-- pom.xml                      # Maven dependencies
+```
 
-The project is structured as follows:
-- `src/main/java` - Contains all Java source files organized by packages for controllers, services, DTOs, and data mappers.
-- `src/main/resources` - Includes configuration files like `application.properties` which configure the behavior of the application.
-- `src/test` - Contains test cases for testing the business logic and integration layers.
+## Features
+- **Health Outcome Analysis**: Computes cognitive, emotional, physical, social, and wellbeing-related health outcomes.
+- **Flexible Querying**: Enables retrieval of research data through multiple filtering options.
+- **Data Processing**: Automates calculations of various health outcome ratios.
+- **RESTful API Services**: Provides structured endpoints for managing and querying health-related data.
 
+## API Endpoints
+- **Health Outcomes Services**: Supports multiple health outcome computations.
+- **Filtering & Querying**: Allows retrieval of filtered research records.
+
+## License
+This project is licensed under the MIT License.
 
