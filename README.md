@@ -18,7 +18,7 @@ YearnMove is a backend project developed with Spring Boot 3, designed to manage 
 ## Installation and Execution
 1. Clone the repository to your local machine:
    ```sh
-   git clone <repository-url>
+   git clone
    ```
 2. Navigate to the project directory:
    ```sh
