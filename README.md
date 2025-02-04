@@ -42,16 +42,12 @@ yearnmove_project
 │-- src/
 │   ├── main/java/com/comp5703/yearnmove/
 │   │   ├── common/             # Common utilities
-│   │   ├── config/             # Application configurations
 │   │   ├── controller/         # API controllers (Article, Main Data, Outcomes)
-│   │   ├── filter/             # CORS filter
+│   │   ├── DTO/                # Data Transfer Objects
 │   │   ├── mapper/             # Database mappers (MyBatis-Plus)
 │   │   ├── pojo/               # Data objects (DTOs, Entities)
-│   │   │   ├── dto/            # Data Transfer Objects
-│   │   │   ├── vo/             # View Objects (Requests, Responses)
 │   │   ├── service/            # Business logic layer
 │   │   │   ├── impl/           # Service implementations
-│   │   ├── utils/              # Utility classes
 │   │   ├── YearnMoveApplication.java # Main Spring Boot application
 │-- resources/                  # Configuration and static resources
 │-- test/                        # Unit and integration tests
